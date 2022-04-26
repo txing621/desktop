@@ -2514,18 +2514,17 @@ export class App extends React.Component<IAppProps, IAppState> {
           numberOfComments: 0,
         },
         approved_with_comments: {
-          prNumber: '14115',
-          reviewId: '903051415',
+          prNumber: '1',
+          reviewId: '927378650',
           numberOfComments: 2,
         },
       }
-
-      const reviewData = reviews.approved_with_nothing
+      const reviewData = reviews.approved_with_comments
 
       const { prNumber, reviewId, numberOfComments } = reviewData
       const account = this.state.accounts[0]
       const api = API.fromAccount(account)
-      const apiPR = await api.fetchPullRequest('desktop', 'desktop', prNumber)
+      const apiPR = await api.fetchPullRequest('sergiou87', 'desktop', prNumber)
       const pullRequest = new PullRequest(
         new Date(apiPR.created_at),
         apiPR.title,
@@ -2546,7 +2545,7 @@ export class App extends React.Component<IAppProps, IAppState> {
       )
 
       const review = await api.fetchPullRequestReview(
-        'desktop',
+        'sergiou87',
         'desktop',
         prNumber,
         reviewId
